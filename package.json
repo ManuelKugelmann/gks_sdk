@@ -1,12 +1,13 @@
 {
     "name": "@gks/sdk",
-    "version": "0.1.0",
-    "description": "GKS Platform SDK — shared UI, systems and dev tools for GKS Portal games.",
+    "version": "0.2.0",
+    "description": "GKS Platform SDK — shared UI, systems, host harness and dev tools for GKS Portal games.",
     "type": "module",
     "exports": {
         "./ui/*": "./ui/*",
         "./systems/*": "./systems/*",
-        "./tools/*": "./tools/*"
+        "./tools/*": "./tools/*",
+        "./host/*": "./host/*"
     },
     "peerDependencies": {
         "phaser": "^3.80.0"
