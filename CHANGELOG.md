@@ -20,12 +20,18 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
-## [Planned — 0.2.0]
+## [0.2.0] — 2026-06-29
 
-- `host/` — `GameHost` contract (the "plug": `user`, `lang`, `storage`, `exit()`) + a `DefaultHost` and minimal harness so a game runs standalone without any wrapper. Replaces per-game `dev-test/mocks`.
-- `systems/LocalizationManager.js` — Multi-language string lookup, language cycling, browser detection.
-- `ui/PopupManager.js` — Generic modal/popup system (currently portal-only).
+### Added
+- `host/bootStandalone.js` — Standalone host harness: boots a game outside the portal, injecting `user` / `currentLanguage` into the Phaser registry and providing an EXIT target. Replaces per-game `dev-test/mocks`.
+- `host/sceneKeys.js` — `makeSceneKeys(name)` derives a game's globally-unique `Intro`/`Main`/`End` scene-key set from a single name prefix.
+- `host/viteGameConfig.js` — `gameViteConfig()` returns a shared Vite config so a standalone game's `vite.config.js` is one line.
+- `ui/PopupManager.js` — JSON-driven, localized, multi-page modal/popup system (previously portal-only).
+- `systems/ProgressionManager.js` — Per-game progress store over `LocalStorageSystem`, keyed by a unique prefix.
+
+### Changed
+- `exports` map extended with `./host/*`. Games now import everything by package name (`@gks/sdk/ui/*`, `@gks/sdk/host/*`, …); the portal keeps `@gks/ui` only as a legacy alias.
 
 ## [Planned — 0.3.0]
 
-- `systems/ProgressionManagerBase.js` — Abstract base class; each game subclasses with its own key prefix.
+- `systems/LocalizationManager.js` — Multi-language string lookup, language cycling, browser detection (still portal-only).
